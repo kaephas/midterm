@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Midterm Survey</title>
+</head>
+<body>
+<h1>Midterm Survey</h1>
+<form action="#" method="post">
+    <label for="name">Name:
+        <input type="text" id="name">
+    </label>
+    <br><br>
+    <label>Check all that apply</label><br><br>
+    <!--checkboxes-->
+    <repeat group="{{ @options }}" value="{{ @option }}">
+        <label>
+            <input type="checkbox" name="choices">{{ @option }}
+        </label><br>
+    </repeat>
+    <br>
+    <input type="submit" value="Submit">
+</form>
+</body>
+</html>
