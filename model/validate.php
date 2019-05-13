@@ -10,6 +10,8 @@
 
 /**
  * Checks if name is not empty and is all letters
+ * and adds to errors if not
+ *
  * @param $name     name to be checked
  * @return bool     if valid
  */
@@ -26,6 +28,8 @@ function validName($name)
 
 /**
  * Checks if choices made are in original array (anti-spoof)
+ * and adds to errors if not or if none selected
+ *
  * @param $choices  array of choices to be checked
  * @return bool     if array is valid
  */
