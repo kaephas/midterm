@@ -24,7 +24,7 @@ $f3 = Base::instance();
 $f3->set('DEBUG', 3);
 
 // options array
-$f3->set('options', array('This midterm is easy.', 'I like midterms.', 'Today is Monday'));
+$f3->set('options', array('This midterm is easy', 'I like midterms', 'Today is Monday'));
 
 //Define a default route (dating splash page)
 $f3->route('GET /', function()
@@ -36,15 +36,27 @@ $f3->route('GET /', function()
 $f3->route('GET|POST /survey', function($f3) {
     if(!empty($_POST)) {
         $name = $_POST['name'];
-        $choices = $_POST['options'];
+        $choices = $_POST['choices'];
 
         $f3->set('name', $name);
         $f3->set('choices', $choices);
+
+        $_SESSION['name'] = $name;
+        $_SESSION['choices'] = $choices;
+
+        $f3->reroute('/summary');
 
     }
 
     $view = new Template();
     echo $view->render('views/survey.html');
+});
+
+$f3->route('GET /summary', function($f3) {
+
+    $f3->set('showChoices', implode(', ', $_SESSION['choices']));
+    $view = new Template();
+    echo $view->render('views/summary.html');
 });
 
 
