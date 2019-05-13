@@ -12,7 +12,11 @@
 <form action="#" method="post">
     <check if="{{ @errors['name'] }}">{{ @errors['name'] }}<br></check>
     <label for="name">Name:
-        <input type="text" id="name" name="name">
+        <input type="text" id="name" name="name"
+
+        <check if="{{ !empty(@name) }}">value="{{ @name }}"</check>
+
+        >
     </label>
     <br><br>
     <label>Check all that apply</label><br>
@@ -21,7 +25,13 @@
     </check><br>
     <repeat group="{{ @options }}" value="{{ @option }}">
         <label>
-            <input type="checkbox" name="choices[]" value="{{ @option }}">{{ @option }}
+            <input type="checkbox" name="choices[]" value="{{ @option }}"
+
+            <check if="{{ !(empty(@choices)) && in_array(@option, @choices) }}">
+                checked
+            </check>
+
+            >{{ @option }}
         </label><br>
     </repeat>
     <br>

@@ -2,7 +2,7 @@
 /**
  * Created by PhpStorm.
  * @author Kaephas Kain
- * Date: 2019-04-12
+ * Date: 5-13-2019
  * Filename: index.php
  * Description: loads error reporting, composer, fat free, setting default route to views/home.html
  */

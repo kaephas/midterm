@@ -1,10 +1,11 @@
 <?php
 /*
- * Kaephas Kain
- * /date/
- * /filename/
- * 
- * /description/
+ * Validation methods for midterm survey
+ *
+ * @author Kaephas Kain
+ *
+ * Date: 5-13-2019
+ * File: validate.php
  */
 
 /**
