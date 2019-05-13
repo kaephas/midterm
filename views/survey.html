@@ -10,12 +10,15 @@
 <body>
 <h1>Midterm Survey</h1>
 <form action="#" method="post">
+    <check if="{{ @errors['name'] }}">{{ @errors['name'] }}<br></check>
     <label for="name">Name:
         <input type="text" id="name" name="name">
     </label>
     <br><br>
-    <label>Check all that apply</label><br><br>
-    <!--checkboxes-->
+    <label>Check all that apply</label><br>
+    <check if="{{ @errors['choices'] }}">
+        {{ @errors['choices']}}
+    </check><br>
     <repeat group="{{ @options }}" value="{{ @option }}">
         <label>
             <input type="checkbox" name="choices[]" value="{{ @option }}">{{ @option }}

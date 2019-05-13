@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Kaephas Kain
+ * @author Kaephas Kain
  * Date: 2019-04-12
  * Filename: index.php
  * Description: loads error reporting, composer, fat free, setting default route to views/home.html
@@ -14,6 +14,8 @@ error_reporting(E_ALL);
 
 //require autoload file
 require_once('vendor/autoload.php');
+// validation functions
+require_once('model/validate.php');
 
 session_start();
 
@@ -41,10 +43,15 @@ $f3->route('GET|POST /survey', function($f3) {
         $f3->set('name', $name);
         $f3->set('choices', $choices);
 
-        $_SESSION['name'] = $name;
-        $_SESSION['choices'] = $choices;
+        $goodName = validName($name);
+        $goodChoices =  validChoice($choices);
 
-        $f3->reroute('/summary');
+        if($goodName && $goodChoices) {
+            $_SESSION['name'] = $name;
+            $_SESSION['choices'] = $choices;
+
+            $f3->reroute('/summary');
+        }
 
     }
 
